@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech</title>
+    <link rel="stylesheet" href="../bootstrap-5.0.2-dist/css/bootstrap.css">
+</head>
+<body>
+    <div class="vh-100 d-grid" style="place-items: center;">
+        <div>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Entrer un texte..." aria-label="Input group example" 
+                multiple
+                name="text">
+                <button type="button" class="btn btn-primary" >Speech</button>
+            </div>
+        </div>   
+    </div>
+
+    <script type="module">
+        const text = document.querySelector('input')
+        const btn = document.querySelector('button')
+
+        btn.addEventListener('click', (e)=>{
+            const textInput = text.value
+            const utterance = new SpeechSynthesisUtterance(textInput)
+            window.speechSynthesis.speak(utterance);
+        })
+
+    </script>
+    
+</body>
+</html>
