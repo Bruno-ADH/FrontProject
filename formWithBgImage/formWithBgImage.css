@@ -27,7 +27,7 @@ body{
  animation: rotate 6s linear infinite alternate;
 }
 
-@keyframes rotate {
+@keyframes move {
     100%{
         background-position: 15% 50%;
     }
