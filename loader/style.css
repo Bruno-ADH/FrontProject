@@ -1,0 +1,75 @@
+:root {
+    --color: 2, 254, 255;
+    --primary: rgb(var(--color));
+    --secondary: rgba(var(--color), .3);
+    --tertiary: rgba(var(--color), .7);
+    --document-color: #333333;
+    --body-color: #0F0F0F;
+}
+
+*, html, body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    display: grid;
+    place-items: center;
+    background-color: var(--document-color);
+    height: 100dvh;
+}
+
+body {
+    position: relative;
+    background-color: var(--body-color);
+    width: 14rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: solid .3rem var(--primary);
+    animation: light-effect 3s linear infinite alternate;
+}
+
+body::after, body::before {
+    --border-color: transparent;
+    --anim-direction: normal;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    content: "";
+    background-color: transparent;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: solid .3rem var(--border-color);
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    animation: rotation 4s linear infinite var(--anim-direction);
+}
+
+body::before {
+    --border-color: var(--secondary);
+    height: 90%;
+}
+
+body::after {
+    --border-color: var(--tertiary);
+    --anim-direction: reverse;
+    height: 80%;
+}
+
+@keyframes light-effect {
+    from {
+        box-shadow:
+            0 0 6px var(--primary),
+            0 0 20px rgba(var(--color), 0.5),
+            0 0 36px rgba(var(--color), 0.4),
+            0 0 41px rgba(var(--color), 0.3);
+    }
+}
+
+@keyframes rotation {
+    to {
+        transform: rotateZ(360deg);
+    }
+}
